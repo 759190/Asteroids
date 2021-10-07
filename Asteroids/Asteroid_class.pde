@@ -6,6 +6,16 @@ class Asteroid extends GameObject {
     velocity.rotate(random(0,TWO_PI)); //360 Degrees
     size=100;
   }
+  
+  Asteroid(int s,float x, float y) {
+    lives=1;
+    location=new PVector(x,y);
+    velocity= new PVector(0,1);
+    velocity.rotate(random(0,TWO_PI)); //360 Degrees
+    size=s;
+  }
+  
+  
   void show() {
    noFill();
    stroke(255);
@@ -20,8 +30,16 @@ class Asteroid extends GameObject {
      GameObject myObj=myObjects.get(i);
      if (myObj instanceof Bullet) {
   if (dist(location.x,location.y,myObj.location.x,myObj.location.y)<= size/2+myObj.size) {
- myObj.lives=0;
- lives=0;
+   myObj.lives=0;
+   lives=0; //distroys asteroid
+   //splits asteroids into 2
+   if(size>40) {
+   myObjects.add(new Asteroid(size/2,location.x,location.y));
+   }
+   
+   
+   
+   
   }  
      }
       i++;

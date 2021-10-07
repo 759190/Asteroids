@@ -40,6 +40,8 @@ class Ship extends GameObject{
   void act() {
    super.act();
    
+ if(velocity.mag() >20) velocity.setMag(20); // sets max speed
+   
    shotTimer++;
    
    //moving the ship
@@ -52,6 +54,8 @@ class Ship extends GameObject{
     myObjects.add(new Bullet()); myObjects.add(new Bullet());
     shotTimer=0;
     } 
+    //slows down ship when not holding key
+   if (upkey ==false && downkey==false) velocity.setMag(velocity.mag()*0.98);
   }
   
 }

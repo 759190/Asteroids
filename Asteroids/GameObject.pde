@@ -12,6 +12,7 @@ class GameObject {
   void show() {
   }
   void act() {
+ //if (mode==GAME) { // PROBABLY WRONG -----------------------------
     location.add(velocity);
 
     //if ship goes off the screen

@@ -1,13 +1,22 @@
 boolean upkey,downkey,leftkey,rightkey,spacekey;
 Ship myShip;
 ArrayList<GameObject> myObjects;
-PImage img;
+
+//mode variables -------------------------------------
+int mode;
+final int INTRO=0;
+final int GAME=1;
+final int PAUSE=2;
+final int GAMEOVER=3;
 
 
 void setup() {
- size(800,600);
+ size(800,800);
+ mode=INTRO;
+  
  imageMode(CENTER); 
  myShip=new Ship();
+ 
  myObjects=new ArrayList<GameObject>();
  myObjects.add(myShip);
  myObjects.add(new Asteroid());
@@ -31,29 +40,18 @@ void draw() {
    }else{
      i++;
    }
+   //game mode
+    if (mode==INTRO) {
+    intro();
+  }else if (mode==GAME) {  
+   game(); 
+  }else if (mode==PAUSE) {
+    pause();
+  }else if (mode==GAMEOVER) {
+    gameover();
+  }else{
+    println("Error: Mode= " + mode);
+  }
  }
+
 }//end
-
-
-
-
-
-
-void keyPressed () {
-if (keyCode==UP) upkey=true;
-if (keyCode==DOWN) downkey=true;
-if (keyCode==RIGHT) rightkey=true;
-if (keyCode==LEFT) leftkey=true;
-if (keyCode==' ') spacekey=true;
-
-}
-
-void keyReleased() {
-if (keyCode==UP) upkey=false;
-if (keyCode==DOWN) downkey=false;
-if (keyCode==RIGHT) rightkey=false;
-if (keyCode==LEFT) leftkey=false;
-if (keyCode==' ') spacekey=false;
-
-
-}
