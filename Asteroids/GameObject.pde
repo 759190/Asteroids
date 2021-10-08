@@ -15,7 +15,7 @@ class GameObject {
  //if (mode==GAME) { // PROBABLY WRONG -----------------------------
     location.add(velocity);
 
-    //if ship goes off the screen
+    //if object goes off the screen
     if(location.y<-50)         location.y=height+50;
     if(location.y>height+50)   location.y=-50;
     if(location.x<-50)         location.x=width+50;

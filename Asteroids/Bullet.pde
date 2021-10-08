@@ -13,13 +13,13 @@ class Bullet extends GameObject {
   }
  void show() {
    stroke(255);
-   noFill();
+   fill(255);
    ellipse(location.x,location.y,size,size);
  }
  void act() {
-  
    super.act();
    
+   //bullet reload time
    timer--;
    if(timer<=0) {
      lives=0;

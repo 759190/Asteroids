@@ -20,6 +20,7 @@ class Ship extends GameObject{
     translate(location.x,location.y);
     rotate(direction.heading());
     
+    rectMode(CORNER);
     //space ship
     fill(150);
     stroke(20);
@@ -39,13 +40,31 @@ class Ship extends GameObject{
   
   void act() {
    super.act();
+  //collision -------------------------------------------
+  int i=0;
+  while(i<myObjects.size()) {
+  GameObject myObj=myObjects.get(i);
+  if (myObj instanceof Asteroid) {
+  if (dist(location.x,location.y,myObj.location.x,myObj.location.y)<= size/2+myObj.size) {
+  lives=lives-1;
+ if (lives==0) mode=GAMEOVER;
+  }
+     }
+   i++;
+   }
+  //---------------------------------------------------------
+   
    
  if(velocity.mag() >20) velocity.setMag(20); // sets max speed
    
    shotTimer++;
    
    //moving the ship
-    if(upkey)velocity.add(direction);
+    if(upkey){
+      velocity.add(direction);
+      myObjects.add(new Fire()); //adds one fire
+       myObjects.add(new Fire());
+    }
     if(downkey)velocity.sub(direction);
     if(leftkey)direction.rotate(-radians(5));
     if(rightkey)direction.rotate(radians(5));
@@ -56,6 +75,6 @@ class Ship extends GameObject{
     } 
     //slows down ship when not holding key
    if (upkey ==false && downkey==false) velocity.setMag(velocity.mag()*0.98);
-  }
   
+  } 
 }

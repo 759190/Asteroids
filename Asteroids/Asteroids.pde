@@ -23,6 +23,8 @@ void setup() {
  myObjects.add(new Asteroid());
  myObjects.add(new Asteroid());
 
+  
+  
 } //end
 
 void draw() {

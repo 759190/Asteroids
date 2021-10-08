@@ -36,10 +36,8 @@ class Asteroid extends GameObject {
    if(size>40) {
    myObjects.add(new Asteroid(size/2,location.x,location.y));
    }
-   
-   
-   
-   
+  // if (myObj instanceof Bullet && lives==0) mode=GAMEOVER; //when asteroid dies you do
+  
   }  
      }
       i++;
