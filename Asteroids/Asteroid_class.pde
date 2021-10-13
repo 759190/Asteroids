@@ -33,6 +33,11 @@ class Asteroid extends GameObject {
    myObj.lives=0;
    lives=0; //distroys asteroid
   myObjects.add(new Particle(location.x,location.y)); //adds explosion particles
+  myObjects.add(new Particle(location.x,location.y));
+  myObjects.add(new Particle(location.x,location.y));
+  myObjects.add(new Particle(location.x,location.y));
+  myObjects.add(new Particle(location.x,location.y));
+  
    //splits asteroids into 2
    if(size>40) {
    myObjects.add(new Asteroid(size/2,location.x,location.y));

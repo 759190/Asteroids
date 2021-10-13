@@ -9,7 +9,7 @@ class Particle extends GameObject {
     velocity= new PVector(0,1);
  
    
-velocity.rotate(PI+random(-10,10)); 
+velocity.rotate(PI+random(-5,5)); 
    velocity.setMag(7); 
    
    
@@ -17,8 +17,8 @@ velocity.rotate(PI+random(-10,10));
  
   void show() {
     rectMode(CENTER);
-    noStroke();
-    fill(255);
+    stroke(255);
+    noFill();
     square(location.x,location.y,size);
   }
   void act() {

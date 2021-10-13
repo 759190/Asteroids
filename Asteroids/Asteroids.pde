@@ -9,6 +9,7 @@ final int GAME=1;
 final int PAUSE=2;
 final int GAMEOVER=3;
 
+ 
 
 void setup() {
  size(800,800);
@@ -23,9 +24,7 @@ void setup() {
  myObjects.add(new Asteroid());
  myObjects.add(new Asteroid());
  
- myObjects.add(new UFO()); 
- myObjects.add(new UFO()); 
-
+ 
 
 
   
@@ -33,6 +32,8 @@ void setup() {
 } //end
 
 void draw() {
+
+
 
    //game mode
     if (mode==INTRO) {

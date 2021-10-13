@@ -3,6 +3,8 @@ class Ship extends GameObject {
   //Instance Variables
   PVector direction;
   int shotTimer, immunityTimer, threshold;
+  int UFOcounter;
+
 
   //Constructors
   Ship() {
@@ -27,6 +29,7 @@ class Ship extends GameObject {
 
 //initial hit immunity
     if (immunityTimer<=180) {
+      noStroke();
      fill(#7EAEFF);
       circle(0,0,60);
       fill(0);
@@ -57,10 +60,18 @@ class Ship extends GameObject {
     
 
     immunityTimer=immunityTimer+1;
+    UFOcounter=UFOcounter+1;
+
   }
 
   void act() {
     super.act();
+ 
+    //Create UFO
+    if (UFOcounter>200){
+myObjects.add(new UFO()); 
+UFOcounter=0;
+ }
     
    if (immunityTimer>=180) { 
       //collision -------------------------------------------

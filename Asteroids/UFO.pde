@@ -1,6 +1,5 @@
 class UFO extends GameObject {
   
-  int UFOcounter;
   
   UFO() {
     lives=1;
@@ -14,7 +13,7 @@ class UFO extends GameObject {
     lives=1;
     location=new PVector(x,y);
     velocity= new PVector(0,1);
-    velocity.rotate(random(0,TWO_PI)); //360 Degrees
+  //  velocity.rotate(random(0,TWO_PI)); //360 Degrees
     size=s;
   }
   
@@ -23,15 +22,11 @@ class UFO extends GameObject {
    noStroke();
    fill(255,0,0);
    ellipse(location.x,location.y,size,size);
-   UFOcounter=UFOcounter+1;
    
-    if (UFOcounter>1000) {
-   }
+   
   }
   void act() {
    super.act(); 
-   
-   
    
    //collision check
    int i=0;
@@ -40,6 +35,10 @@ class UFO extends GameObject {
      if (myObj instanceof Bullet) {
   if (dist(location.x,location.y,myObj.location.x,myObj.location.y)<= size/2+myObj.size) {
    myObj.lives=0;
+  myObjects.add(new Particle(location.x,location.y)); //adds explosion particles
+  myObjects.add(new Particle(location.x,location.y));
+  myObjects.add(new Particle(location.x,location.y));
+  myObjects.add(new Particle(location.x,location.y));
    lives=0; //distroys UFO
   
   
