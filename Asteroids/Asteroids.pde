@@ -13,8 +13,8 @@ final int GAMEOVER=3;
 void setup() {
  size(800,800);
  mode=INTRO;
-  
  imageMode(CENTER); 
+ 
  myShip=new Ship();
  
  myObjects=new ArrayList<GameObject>();
@@ -22,26 +22,18 @@ void setup() {
  myObjects.add(new Asteroid());
  myObjects.add(new Asteroid());
  myObjects.add(new Asteroid());
+ 
+ myObjects.add(new UFO()); 
+ myObjects.add(new UFO()); 
+
+
 
   
   
 } //end
 
 void draw() {
- background(0); 
 
- 
- int i=0;
- while(i<myObjects.size()) {
-   GameObject myObj= myObjects.get(i);
-   myObj.show();
-   myObj.act();
-   
-   if (myObj.lives==0) {
-     myObjects.remove(i);
-   }else{
-     i++;
-   }
    //game mode
     if (mode==INTRO) {
     intro();
@@ -54,6 +46,6 @@ void draw() {
   }else{
     println("Error: Mode= " + mode);
   }
- }
+ 
 
 }//end

@@ -1,8 +1,7 @@
-class Bullet extends GameObject {
- 
+class UFObullet extends GameObject {
   int timer;
  
-  Bullet() {
+  UFObullet() {
     timer=60;
     lives=1;
     location=new PVector(myShip.location.x,myShip.location.y);
@@ -13,7 +12,7 @@ class Bullet extends GameObject {
   }
  void show() {
    stroke(255);
-   fill(255);
+   fill(255,0,0);
    ellipse(location.x,location.y,size,size);
  }
  void act() {
