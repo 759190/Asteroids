@@ -1,14 +1,16 @@
 class UFObullet extends GameObject {
   int timer;
  
-  UFObullet() {
+  UFObullet(float x,float y, float vx, float vy) {
     timer=60;
     lives=1;
-    location=new PVector(myShip.location.x,myShip.location.y);
-    velocity=new PVector(myShip.direction.x,myShip.direction.y);
+    location=new PVector(x,y);
+    velocity= new PVector(vx,vy);
     velocity.setMag(10); // set magnatude
-    velocity.add(myShip.velocity); //bullet speed (adding)
+   velocity.add(myShip.velocity); //bullet speed (adding)
     size=10;
+       
+
   }
  void show() {
    stroke(255);
@@ -17,6 +19,7 @@ class UFObullet extends GameObject {
  }
  void act() {
    super.act();
+   
    
    //bullet reload time
    timer--;

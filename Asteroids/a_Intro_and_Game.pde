@@ -22,6 +22,10 @@ void introClicks() {
 // Game -------------------------------------------------------------------
 void game() {
   
+  //pause button
+  
+
+  
    background(0); 
  int i=0;
  while(i<myObjects.size()) {
@@ -39,4 +43,5 @@ void game() {
   
 }
 void gameClicks() { 
+ mode=PAUSE;
 }

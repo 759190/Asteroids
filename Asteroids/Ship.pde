@@ -68,17 +68,32 @@ class Ship extends GameObject {
     super.act();
  
     //Create UFO
-    if (UFOcounter>200){
+    if (UFOcounter>100){
 myObjects.add(new UFO()); 
 UFOcounter=0;
  }
     
    if (immunityTimer>=180) { 
-      //collision -------------------------------------------
+      //collision with asteroid -------------------------------------------
       int i=0;
       while (i<myObjects.size()) {
         GameObject myObj=myObjects.get(i);
         if (myObj instanceof Asteroid) {
+          if (dist(location.x, location.y, myObj.location.x, myObj.location.y)<= size/2+myObj.size) {
+            immunityTimer=0;
+            lives=lives-1;
+            if (lives==0) mode=GAMEOVER;
+          }
+        }
+        i++;
+      }
+    } //--------------------------------------------------------- 
+ if (immunityTimer>=180) { 
+      //collision UFO bullet -------------------------------------------
+      int i=0;
+      while (i<myObjects.size()) {
+        GameObject myObj=myObjects.get(i);
+        if (myObj instanceof UFObullet) {
           if (dist(location.x, location.y, myObj.location.x, myObj.location.y)<= size/2+myObj.size) {
             immunityTimer=0;
             //myObjects.add(new Particle()); //adds explosion particles
@@ -89,7 +104,6 @@ UFOcounter=0;
         i++;
       }
     } //--------------------------------------------------------- 
-
 
     if (velocity.mag() >20) velocity.setMag(20); // sets max speed
 

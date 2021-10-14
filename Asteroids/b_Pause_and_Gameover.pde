@@ -1,8 +1,12 @@
 void pause () {
-  
+  fill(255);
+  textAlign(CENTER);
+  textSize(100);
+  text("Pause",width/2,height/2); //black font
 }
 
 void pauseClicks() {  
+  mode=GAME;
 }
 
 void reset() { //reset-------------------------------------------
