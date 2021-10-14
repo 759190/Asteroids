@@ -1,10 +1,13 @@
 class Asteroid extends GameObject {
+ int asterDead; //keeps track of destroyed asteroids 
+ 
   Asteroid() {
     lives=1;
     location=new PVector (random(0,width), random(0,height));
     velocity= new PVector(0,1);
     velocity.rotate(random(0,TWO_PI)); //360 Degrees
     size=100;
+    asterDead=21;
   }
   
   Asteroid(int s,float x, float y) {
@@ -20,9 +23,13 @@ class Asteroid extends GameObject {
    noFill();
    stroke(255);
    ellipse(location.x,location.y,size,size);
+   
+  
+
   }
   void act() {
    super.act(); 
+   
    
    //collision check
    int i=0;
@@ -32,7 +39,10 @@ class Asteroid extends GameObject {
   if (dist(location.x,location.y,myObj.location.x,myObj.location.y)<= size/2+myObj.size) {
    myObj.lives=0;
    lives=0; //distroys asteroid
-  myObjects.add(new Particle(location.x,location.y)); //adds explosion particles
+   asterDead=asterDead-1;
+   if (asterDead==0) mode=GAMEOVER; // --------------------
+   //adds explosion particles
+  myObjects.add(new Particle(location.x,location.y)); 
   myObjects.add(new Particle(location.x,location.y));
   myObjects.add(new Particle(location.x,location.y));
   myObjects.add(new Particle(location.x,location.y));
@@ -42,7 +52,7 @@ class Asteroid extends GameObject {
    if(size>40) {
    myObjects.add(new Asteroid(size/2,location.x,location.y));
    }
-  
+
   }  
      }
       i++;

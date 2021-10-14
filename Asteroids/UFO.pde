@@ -2,17 +2,32 @@ class UFO extends GameObject {
   
   int bulletCounter; 
   float vx,vy;
-  //int a,b;
-  
+  int randomSpawn;  
   UFO() {
-    lives=1;
-   location=new PVector (random(0,width), random(0,height));
-    velocity= new PVector(0,1);
-    velocity.rotate(random(0,TWO_PI)); //360 Degrees
-    size=50;
+   lives=1;
+   randomSpawn= int (random(0,3));
+   size=50;
+    //____________________________________________________________ 
+    if(randomSpawn==0) {
+   location=new PVector (random(0,width), 0); // top
+   velocity= new PVector(0,1); 
+    }
+    if(randomSpawn==1) {
+   location=new PVector (random(0,width), 800); // bottom
+   velocity= new PVector(0,1);
+    }
+    if(randomSpawn==2) {
+   location=new PVector (0, random(0,height)); //left 
+   velocity= new PVector(0,1);
+    }
+    if(randomSpawn==3) {
+   location=new PVector (800, random(0,height)); //right
+   velocity= new PVector(0,1);
+    }
+    //____________________________________________________________
     
-    // (x<0 && x>width &&  y<0 && y>height) 
- 
+    
+   
   }
   
   
@@ -20,7 +35,7 @@ class UFO extends GameObject {
   void show() {
     
     vx=myShip.location.x-location.x; 
- vy=myShip.location.y-location.y;
+    vy=myShip.location.y-location.y;
  
    noStroke();
    fill(255,0,0);
@@ -30,12 +45,13 @@ class UFO extends GameObject {
   }
   void act() {
    super.act(); 
-   if (bulletCounter>60) {
+   if (bulletCounter>150) {
    myObjects.add(new UFObullet(location.x,location.y,vx,vy));
-
-
      bulletCounter=0;
    }
+   
+   
+  
    
    //collision check
    int i=0;

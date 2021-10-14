@@ -13,7 +13,7 @@ final int GAMEOVER=3;
 PImage[] gif;
 int frameNumber;
 int f; //frame
-
+boolean wkey;
 PFont space; //font
 
 

@@ -20,7 +20,7 @@ class Bullet extends GameObject {
    super.act();
    
    //bullet reload time
-   timer--;
+   timer=timer-1;
    if(timer<=0) {
      lives=0;  
    }

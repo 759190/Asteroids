@@ -21,6 +21,7 @@ if (keyCode==DOWN) downkey=true;
 if (keyCode==RIGHT) rightkey=true;
 if (keyCode==LEFT) leftkey=true;
 if (keyCode==' ') spacekey=true;
+if (key=='w' || key=='W') wkey=true;
 
 }
 
@@ -30,6 +31,7 @@ if (keyCode==DOWN) downkey=false;
 if (keyCode==RIGHT) rightkey=false;
 if (keyCode==LEFT) leftkey=false;
 if (keyCode==' ') spacekey=false;
+ if (key=='w' || key=='W') wkey=false;
 
 
 }

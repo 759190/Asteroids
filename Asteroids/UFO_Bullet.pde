@@ -7,7 +7,7 @@ class UFObullet extends GameObject {
     location=new PVector(x,y);
     velocity= new PVector(vx,vy);
     velocity.setMag(10); // set magnatude
-   velocity.add(myShip.velocity); //bullet speed (adding)
+  // velocity.add(myShip.velocity); //bullet speed (adding)
     size=10;
        
 

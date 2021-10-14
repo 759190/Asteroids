@@ -4,25 +4,26 @@ class Ship extends GameObject {
   PVector direction;
   int shotTimer, immunityTimer, threshold;
   int UFOcounter;
+  int teleportTimer;
+  float s; // teleport timer size
 
 
   //Constructors
   Ship() {
-    lives=3;
+    lives=100;
     location=new PVector(width/2, height/2);
     velocity=new PVector(0, 0);
     direction=new PVector(0, -0.1);
     shotTimer=0;
     threshold=60;
     immunityTimer=0;
+    teleportTimer=0;
+    s=100;
   }
 
   //Behaviour Functions
   void show() {
     pushMatrix();
-    
-    
-    
     translate(location.x, location.y);
     rotate(direction.heading());
     rectMode(CORNER);
@@ -59,20 +60,44 @@ class Ship extends GameObject {
     text("Lives: "+lives, width/2, 100); //Life counter
 //------------------------------------------------
     
-
     immunityTimer=immunityTimer+1;
     UFOcounter=UFOcounter+1;
+    teleportTimer=teleportTimer+1;
+    
+    
+     
+    //teleport timer bar
+    if (teleportTimer<600){
+      noFill();
+      fill(255);
+      rect(95,75,110,20);
+      fill(255,0,0);
+    rect(100,80,s,10);
+    s=s-0.16;
+    }
 
   }
 
   void act() {
     super.act();
  
-    //Create UFO
-    if (UFOcounter>100){
+ //Create UFO
+    if (UFOcounter>600){
 myObjects.add(new UFO()); 
 UFOcounter=0;
+
  }
+ 
+ //Teleport feature // ----------------------------------------------------
+ if (wkey) {
+   if (teleportTimer>600) {
+ myShip.location.x=(random(0,width));
+ myShip.location.y=(random(0,width));
+ teleportTimer=0;
+ s=100;
+ 
+   }
+ } // ----------------------------------------------------------------------
     
    if (immunityTimer>=180) { 
       //collision with asteroid -------------------------------------------
@@ -84,6 +109,9 @@ UFOcounter=0;
             immunityTimer=0;
             lives=lives-1;
             if (lives==0) mode=GAMEOVER;
+            
+            // what if I add a variable that when they are touching touch=true else false
+            // if touch == false then you can teleport
           }
         }
         i++;
@@ -118,8 +146,7 @@ UFOcounter=0;
     }
     if (downkey) {
       velocity.sub(direction);  
-      //myObjects.add(new Particle());
-      //myObjects.add(new Particle());
+      
     }
     if (leftkey)direction.rotate(-radians(5));
     if (rightkey)direction.rotate(radians(5));
@@ -127,7 +154,7 @@ UFOcounter=0;
     if (spacekey&&shotTimer>=threshold) {
       myObjects.add(new Bullet()); 
       myObjects.add(new Bullet());
-      shotTimer=0;
+      shotTimer=40;
     } 
     //slows down ship when not holding key
     if (upkey ==false && downkey==false) velocity.setMag(velocity.mag()*0.98);
