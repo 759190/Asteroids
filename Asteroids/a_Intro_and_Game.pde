@@ -1,14 +1,15 @@
 void intro() {
   rectMode(CORNER);
-  fill(0);
-  stroke(0);
-  rect(0,0,height,width);
-  fill(255);
+  //gif
+image(gif[f],500,500,1000,1000);
+f=f+1;
+if (f==frameNumber) f=0;
   
   //Title text
+  textFont(space);
   textAlign(CENTER);
-  textSize(100);
-  text("Asteroids",width/2,height/2); //black font
+  textSize(70);
+  text("Asteroids",width/2,300); //black font
   
   
 }

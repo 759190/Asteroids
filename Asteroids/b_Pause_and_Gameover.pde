@@ -18,8 +18,8 @@ myShip=new Ship();
  myObjects.add(new Asteroid());
  myObjects.add(new Asteroid());
  
- myObjects.add(new UFO()); 
- myObjects.add(new UFO()); 
+ //myObjects.add(new UFO()); 
+ //myObjects.add(new UFO()); 
 
 
 
@@ -30,14 +30,17 @@ myShip=new Ship();
     
 // GAMEOVER---------------------------------------------------------------------
 void gameover() {
+  
+  //gif
+image(gif[f],500,500,1000,1000);
+f=f+1;
+if (f==frameNumber) f=0;
+  
   if (myShip.lives==0) {
   rectMode(CORNER);
-  fill(0,255,0);
-  noStroke();
-  rect(0,0,width,height);
-  
+   
   //Title text
-  fill(0);
+  fill(255);
   textAlign(CENTER);
   textSize(100);
   text("You lose",width/2,height/2); //black font

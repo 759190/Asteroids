@@ -2,19 +2,26 @@ class UFO extends GameObject {
   
   int bulletCounter; 
   float vx,vy;
+  //int a,b;
+  
   UFO() {
     lives=1;
    location=new PVector (random(0,width), random(0,height));
     velocity= new PVector(0,1);
     velocity.rotate(random(0,TWO_PI)); //360 Degrees
     size=50;
- vx=myShip.location.x-location.x; 
- vy=myShip.location.y-location.y;
+    
+    // (x<0 && x>width &&  y<0 && y>height) 
+ 
   }
   
   
   
   void show() {
+    
+    vx=myShip.location.x-location.x; 
+ vy=myShip.location.y-location.y;
+ 
    noStroke();
    fill(255,0,0);
    ellipse(location.x,location.y,size,size);

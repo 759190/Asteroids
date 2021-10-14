@@ -54,6 +54,7 @@ class Ship extends GameObject {
     popMatrix();
 
     //lives counter
+    fill(255);
     textSize(20);
     text("Lives: "+lives, width/2, 100); //Life counter
 //------------------------------------------------
