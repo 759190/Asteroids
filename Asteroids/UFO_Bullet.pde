@@ -14,7 +14,7 @@ class UFObullet extends GameObject {
   }
  void show() {
    stroke(255);
-   fill(255,0,0);
+   fill(lightPurple);
    ellipse(location.x,location.y,size,size);
  }
  void act() {

@@ -2,6 +2,7 @@ class Bullet extends GameObject {
  
   int timer;
  
+ 
   Bullet() {
     timer=60;
     lives=1;
@@ -10,6 +11,7 @@ class Bullet extends GameObject {
     velocity.setMag(10); // set magnatude
     velocity.add(myShip.velocity); //bullet speed (adding)
     size=10;
+  
   }
  void show() {
    stroke(255);

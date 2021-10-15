@@ -16,6 +16,12 @@ int f; //frame
 boolean wkey;
 PFont space; //font
 
+//colour scheme
+color lightGrey= #E0E5F0;
+color grey= #B9B4C0;
+color lightPurple=#AF71BC;
+color purple=#492279;
+
 
 void setup() {
  size(800,800);

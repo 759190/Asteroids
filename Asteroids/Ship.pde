@@ -6,6 +6,7 @@ class Ship extends GameObject {
   int UFOcounter;
   int teleportTimer;
   float s; // teleport timer size
+  boolean danger;
 
 
   //Constructors
@@ -19,6 +20,7 @@ class Ship extends GameObject {
     immunityTimer=0;
     teleportTimer=0;
     s=100;
+    danger=false;
   }
 
   //Behaviour Functions
@@ -31,7 +33,7 @@ class Ship extends GameObject {
 //initial hit immunity
     if (immunityTimer<=180) {
       noStroke();
-     fill(#7EAEFF);
+     fill(lightPurple);
       circle(0,0,60);
       fill(0);
       circle(0,0,55);
@@ -50,12 +52,12 @@ class Ship extends GameObject {
     rect(-20, -30, 20, 5); //left wing
     rect(-20, 25, 20, 5); //right wing
     //window
-    fill(#7EAEFF);
+    fill(lightGrey);
     ellipse(-10, 0, 20, 5);
     popMatrix();
 
     //lives counter
-    fill(255);
+    fill(lightGrey);
     textSize(20);
     text("Lives: "+lives, width/2, 100); //Life counter
 //------------------------------------------------
@@ -69,12 +71,13 @@ class Ship extends GameObject {
     //teleport timer bar
     if (teleportTimer<600){
       noFill();
-      fill(255);
+      fill(lightGrey);
       rect(95,75,110,20);
-      fill(255,0,0);
+      fill(purple);
     rect(100,80,s,10);
     s=s-0.16;
     }
+
 
   }
 
@@ -88,16 +91,36 @@ UFOcounter=0;
 
  }
  
- //Teleport feature // ----------------------------------------------------
+//Teleport feature // ----------------------------------------------------------------------------
+/*
  if (wkey) {
-   if (teleportTimer>600) {
+    if (myObj instanceof Asteroid) {
+  // if (teleportTimer>600) {
+myShip.location.x=(random(0,width));
+myShip.location.y=(random(0,width));
+
+teleportTimer=0;
+ s=100;
+
+if (dist(location.x, location.y, myObj.location.x, myObj.location.y)<= size/2+myObj.size+200) {
+  danger=true;
+} else {
+  danger=false;
+}
+
+ 
+while (danger==true) {
  myShip.location.x=(random(0,width));
  myShip.location.y=(random(0,width));
- teleportTimer=0;
- s=100;
  
-   }
- } // ----------------------------------------------------------------------
+}
+ }
+    }
+     //If that coordinate is within a close distance of any Asteroid (< 200 pixels),
+     //it should pick again and again until it generates a safe x and y.
+// -------------------------------------------------------------------------------------
+*/
+
     
    if (immunityTimer>=180) { 
       //collision with asteroid -------------------------------------------
@@ -110,8 +133,6 @@ UFOcounter=0;
             lives=lives-1;
             if (lives==0) mode=GAMEOVER;
             
-            // what if I add a variable that when they are touching touch=true else false
-            // if touch == false then you can teleport
           }
         }
         i++;
@@ -125,7 +146,6 @@ UFOcounter=0;
         if (myObj instanceof UFObullet) {
           if (dist(location.x, location.y, myObj.location.x, myObj.location.y)<= size/2+myObj.size) {
             immunityTimer=0;
-            //myObjects.add(new Particle()); //adds explosion particles
             lives=lives-1;
             if (lives==0) mode=GAMEOVER;
           }
@@ -145,7 +165,8 @@ UFOcounter=0;
       myObjects.add(new Fire());
     }
     if (downkey) {
-      velocity.sub(direction);  
+      velocity.sub(direction); 
+    
       
     }
     if (leftkey)direction.rotate(-radians(5));
