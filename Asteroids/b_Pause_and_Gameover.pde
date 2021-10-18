@@ -2,7 +2,7 @@ void pause () {
   fill(255);
   textAlign(CENTER);
   textSize(100);
-  text("Pause",width/2,height/2); //black font
+  text("Pause",width/2,height/2); 
 }
 
 void pauseClicks() {  
@@ -17,14 +17,6 @@ myShip=new Ship();
  myObjects.add(new Asteroid());
  myObjects.add(new Asteroid());
  myObjects.add(new Asteroid());
- 
- //myObjects.add(new UFO()); 
- //myObjects.add(new UFO()); 
-
-
-
- 
- 
 
     }//end
     
@@ -43,7 +35,18 @@ if (f==frameNumber) f=0;
   fill(255);
   textAlign(CENTER);
   textSize(100);
-  text("You lose",width/2,height/2); //black font
+  text("You lose",width/2,height/2); 
+  }else{
+  
+  
+     mode=GAMEOVER;
+  rectMode(CORNER);
+   
+  //Title text
+  fill(255);
+  textAlign(CENTER);
+  textSize(100);
+  text("You Win",width/2,height/2);
   }
    
  

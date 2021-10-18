@@ -39,9 +39,11 @@ class UFO extends GameObject {
     vx=myShip.location.x-location.x; 
     vy=myShip.location.y-location.y;
  
-   noStroke();
+   stroke(255);
    fill(lightPurple);
    ellipse(location.x,location.y,size,size);
+   fill(lightGrey);
+   ellipse(location.x,location.y,size-20,size-20);
    bulletCounter=bulletCounter+1;
    
   }

@@ -22,6 +22,8 @@ color grey= #B9B4C0;
 color lightPurple=#AF71BC;
 color purple=#492279;
 
+int asterCount;
+
 
 void setup() {
  size(800,800);
@@ -39,7 +41,7 @@ void setup() {
  space=createFont("SPACE.ttf", 200); //font
  
 //Set up Gif
- frameNumber=15;
+ frameNumber=35;
  gif = new PImage[frameNumber];
  int i=0;
  while (i<frameNumber) { //while loop

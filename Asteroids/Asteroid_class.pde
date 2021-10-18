@@ -1,6 +1,6 @@
 class Asteroid extends GameObject {
  
-  int asterCount;
+  
  
   Asteroid() {
     lives=1;
@@ -27,16 +27,14 @@ class Asteroid extends GameObject {
   
   void show() {
    noFill();
+   strokeWeight(2);
    stroke(255);
    ellipse(location.x,location.y,size,size);
-  
    
 
   }
   void act() {
    super.act(); 
-   
- 
    
    //collision check
    int i=0;
@@ -46,14 +44,14 @@ class Asteroid extends GameObject {
   if (dist(location.x,location.y,myObj.location.x,myObj.location.y)<= size/2+myObj.size) {
     myObj.lives=0;
    lives=0; //distroys asteroid
+   asterCount=asterCount+1;
+   
+   if (asterCount==41) {
+     mode=GAMEOVER;
+ 
+  }
+   
   
-  asterCount=asterCount+1;
-  if (asterCount==3) {
-      mode=GAMEOVER; // --------------------
-    } 
-   
-   
-   
    //adds explosion particles
   myObjects.add(new Particle(location.x,location.y)); 
   myObjects.add(new Particle(location.x,location.y));
@@ -63,7 +61,9 @@ class Asteroid extends GameObject {
   
    //splits asteroids into 2
    if(size>40) {
+    
    myObjects.add(new Asteroid(size/2,location.x,location.y));
+
    }
 
   }  

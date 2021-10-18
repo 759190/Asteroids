@@ -22,7 +22,7 @@ velocity.rotate(PI+random(-5,5));
     square(location.x,location.y,size);
   }
   void act() {
-    super.act(); //movement code
+   location.add(velocity);
     t=t-10;
     if(t<=0) lives=0;
     
