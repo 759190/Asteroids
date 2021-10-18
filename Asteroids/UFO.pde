@@ -9,7 +9,7 @@ class UFO extends GameObject {
    randomSpawn= int (random(0,4));
    size=50;
    
-    //____________________________________________________________ 
+    //Random spawn point on edge_________________________________________ 
     if(randomSpawn==0) {
    location=new PVector (random(0,width), 0); // start at top
    velocity= new PVector(0,1);
@@ -27,9 +27,7 @@ class UFO extends GameObject {
    velocity= new PVector(-1,0);
     } 
     //____________________________________________________________
-    
-    
-   
+ 
   }
   
   

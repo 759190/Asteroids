@@ -39,7 +39,7 @@ class Ship extends GameObject {
       circle(0, 0, 55);
     }
 
-    //space ship
+    //space ship----------------------------------------
   
     fill(grey);
     strokeWeight(1);

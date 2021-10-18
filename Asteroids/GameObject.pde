@@ -12,7 +12,7 @@ class GameObject {
   void show() {
   }
   void act() {
- //if (mode==GAME) { // PROBABLY WRONG -----------------------------
+ 
     location.add(velocity);
 
     //if object goes off the screen
